@@ -27,10 +27,10 @@ $r = Invoke-WebRequest $athleteprofile
 
 
 #>
-clear-host
+#clear-host
 $athletename = "Charlotte Nicholls"
 $genderid = "W"
-$eventid = "SP4K"
+$eventid = "DT1K"
 write-host "Checking PB for $athletename in event $eventid..." -ForegroundColor Yellow
 $site = "$siteroot/rankings/rankinglist.aspx?event=$eventid&agegroup=ALL&sex=$genderid&year=2018"
 $siteparser = invoke-webrequest -uri $site
@@ -48,14 +48,7 @@ foreach ($table in $tables){
         $tablenumber = $uniquenumber
     }
 }
-#clear-host
-$resultstable = & C:\Temp\competition_entrants\Get-WebRequestTable.ps1 $r -TableNumber $tablenumber | Format-Table -Auto
+$resultstable = & C:\Temp\competition_entrants\Get-WebRequestTable.ps1 $r -TableNumber $tablenumber | Format-Table -Auto -HideTableHeaders
 $results = & C:\Temp\competition_entrants\Get-WebRequestTable.ps1 $r -TableNumber $tablenumber
-<#
-foreach ($result in $results | where {$_.name -eq "P1"}) {
-    $
-    write-host $result.P2
-}
-#>
 $PB = $results | where {$_.P1 -eq $eventid} | select -expandproperty P2
 write-host "PB for $athletename in event $eventid is $PB" -ForegroundColor Cyan
