@@ -1,0 +1,6 @@
+- Obtain list of entrants in ??? format (CSV? XLSX? TXT? Cuneiform?)
+- Initial sort alphabetically
+- Lookup alphabetically sorted list on P10 using name and club (if included, DOB as a tertiary lookup characteristic)
+- Parse event type from input file
+- Lookup PB for event type on P10. In event of identical PBs, lookup up SB. In case both are still equal ???
+- Rank in order of PB/SB from best to worst
